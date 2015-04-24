@@ -1,7 +1,6 @@
 package redis_spawn_test
 
 import (
-	"fmt"
 	"github.com/garyburd/redigo/redis"
 	redspawn "github.com/nickdufresne/redis_spawn"
 	"net"
@@ -18,7 +17,6 @@ type MySuite struct{}
 var _ = Suite(&MySuite{})
 
 func (s *MySuite) TestSpawnLaunches(c *C) {
-	fmt.Println("TestSpawnLaunches ...")
 	server, err := redspawn.Spawn(9999)
 
 	c.Check(server.PID, Not(Equals), 0)
@@ -43,7 +41,6 @@ func (s *MySuite) TestSpawnLaunches(c *C) {
 }
 
 func (s *MySuite) TestSpawnDetectsAlreadyRunning(c *C) {
-	fmt.Println("TestSpawnDetectsAlreadyRunning ...")
 	server, err := redspawn.Spawn(9999)
 
 	c.Check(server.PID, Not(Equals), 0)
